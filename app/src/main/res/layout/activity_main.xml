@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:orientation="vertical">
+        <Button
+            android:id="@+id/button_open_file"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:onClick="openFile"
+            android:text="Open File"/>
+        <EditText
+            android:id="@+id/file_context"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scrollbars="vertical"
+            android:inputType="textMultiLine"
+            android:gravity="top"
+            android:layout_marginTop="16dp"
+            android:lines="5"/>
+        <Button
+            android:id="@+id/button_plot_graph"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="plotGraph"
+            android:text="Plot Graph"/>
+        <!--Checkboxes та поля для результатів розрахунків -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <CheckBox
+                android:id="@+id/checkBoxMean"
+                android:onClick="calculateStatistics"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/checkB_Mean" />
+            <TextView
+                android:id="@+id/textMean"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Mean" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <CheckBox
+                android:id="@+id/checkBoxSTD"
+                android:onClick="calculateStatistics"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/check_b_STD" />
+            <TextView
+                android:id="@+id/textSTD"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Standard Deviation" />
+        </LinearLayout>
+        <!-- Графік -->
+        <com.androidplot.xy.XYPlot
+            android:id="@+id/plot"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            app:domainTitle="domain"
+            app:lineLabelRotationBottom="-45"
+            app:lineLabels="left|bottom"
+            app:rangeTitle="range"
+            app:title="ECG" />
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
